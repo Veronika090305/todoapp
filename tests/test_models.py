@@ -66,3 +66,9 @@ def test_clear_completed():
     manager.clear_completed()
     assert len(manager) == 1
     assert manager.active_count() == 1
+
+def test_rename_task():
+    manager = TaskManager()
+    task = manager.add_task("Старое название")
+    manager.rename_task(task.id, "Новое название")
+    assert task.title == "Новое название"
