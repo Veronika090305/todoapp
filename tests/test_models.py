@@ -1,3 +1,5 @@
+import pytest
+
 from models import TaskManager
 
 def test_new_list_is_empty():
@@ -43,3 +45,15 @@ def test_delete_task_removes_it():
     task = manager.add_task("Задача")
     manager.delete_task(task.id)
     assert len(manager) == 0
+
+def test_add_empty_title_raises():
+    manager = TaskManager()
+    with pytest.raises(ValueError):
+        manager.add_task("   ")
+
+def test_active_count():
+    manager = TaskManager()
+    a = manager.add_task("A")
+    manager.add_task("B")
+    manager.complete_task(a.id)
+    assert manager.active_count() == 1

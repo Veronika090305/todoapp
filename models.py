@@ -17,7 +17,9 @@ class TaskManager:
         return len(self._tasks)
 
     def add_task(self, title):
-        task = Task(id=self._next_id, title=title)
+        if title is None or not title.strip():
+            raise ValueError("Заголовок задачи не может быть пустым")
+        task = Task(id=self._next_id, title=title.strip())
         self._tasks.append(task)
         self._next_id += 1
         return task
@@ -36,9 +38,12 @@ class TaskManager:
         if task is not None:
             task.done = True
         return task
-    
+
     def delete_task(self, task_id):
         task = self.get_task(task_id)
         if task is not None:
             self._tasks.remove(task)
         return task
+
+    def active_count(self):
+        return sum(1 for task in self._tasks if not task.done)
