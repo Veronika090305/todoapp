@@ -37,3 +37,9 @@ def test_complete_task_marks_done():
     task = manager.add_task("Задача")
     manager.complete_task(task.id)
     assert task.done is True
+
+def test_delete_task_removes_it():
+    manager = TaskManager()
+    task = manager.add_task("Задача")
+    manager.delete_task(task.id)
+    assert len(manager) == 0
