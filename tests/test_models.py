@@ -13,3 +13,8 @@ def test_add_task_sets_title():
     manager = TaskManager()
     task = manager.add_task("Купить хлеб")
     assert task.title == "Купить хлеб"
+
+def test_new_task_is_not_done():
+    manager = TaskManager()
+    task = manager.add_task("Купить хлеб")
+    assert task.done is False
