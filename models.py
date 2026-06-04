@@ -50,3 +50,11 @@ class TaskManager:
 
     def clear_completed(self):
         self._tasks = [task for task in self._tasks if not task.done]
+    
+    def rename_task(self, task_id, new_title):
+        if new_title is None or not new_title.strip():
+            raise ValueError("Новый заголовок не может быть пустым")
+        task = self.get_task(task_id)
+        if task is not None:
+            task.title = new_title.strip()
+        return task
