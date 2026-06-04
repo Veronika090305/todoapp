@@ -25,3 +25,9 @@ def test_tasks_get_unique_ids():
     second = manager.add_task("Задача 2")
     assert first.id != second.id
     assert second.id == first.id + 1
+
+def test_get_task_by_id():
+    manager = TaskManager()
+    task = manager.add_task("Задача")
+    assert manager.get_task(task.id) is task
+    assert manager.get_task(999) is None

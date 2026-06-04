@@ -21,3 +21,12 @@ class TaskManager:
         self._tasks.append(task)
         self._next_id += 1
         return task
+
+    def get_task(self, task_id):
+        for task in self._tasks:
+            if task.id == task_id:
+                return task
+        return None
+
+    def all_tasks(self):
+        return list(self._tasks)
