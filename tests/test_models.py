@@ -31,3 +31,9 @@ def test_get_task_by_id():
     task = manager.add_task("Задача")
     assert manager.get_task(task.id) is task
     assert manager.get_task(999) is None
+
+def test_complete_task_marks_done():
+    manager = TaskManager()
+    task = manager.add_task("Задача")
+    manager.complete_task(task.id)
+    assert task.done is True

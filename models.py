@@ -30,3 +30,9 @@ class TaskManager:
 
     def all_tasks(self):
         return list(self._tasks)
+
+    def complete_task(self, task_id):
+        task = self.get_task(task_id)
+        if task is not None:
+            task.done = True
+        return task
