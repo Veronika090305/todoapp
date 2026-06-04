@@ -8,3 +8,8 @@ def test_add_task_increases_count():
     manager = TaskManager()
     manager.add_task("Купить хлеб")
     assert len(manager) == 1
+
+def test_add_task_sets_title():
+    manager = TaskManager()
+    task = manager.add_task("Купить хлеб")
+    assert task.title == "Купить хлеб"
