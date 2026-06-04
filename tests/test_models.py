@@ -18,3 +18,10 @@ def test_new_task_is_not_done():
     manager = TaskManager()
     task = manager.add_task("Купить хлеб")
     assert task.done is False
+
+def test_tasks_get_unique_ids():
+    manager = TaskManager()
+    first = manager.add_task("Задача 1")
+    second = manager.add_task("Задача 2")
+    assert first.id != second.id
+    assert second.id == first.id + 1
