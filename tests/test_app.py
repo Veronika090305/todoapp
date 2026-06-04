@@ -23,3 +23,9 @@ def test_add_task_via_post(client):
     assert response.status_code == 302
     page = client.get("/").get_data(as_text=True)
     assert "Новая задача" in page
+
+def test_complete_task_via_post(client):
+    client.post("/add", data={"title": "Задача"})
+    client.post("/complete/1")
+    page = client.get("/").get_data(as_text=True)
+    assert 'class="done"' in page
