@@ -47,3 +47,6 @@ class TaskManager:
 
     def active_count(self):
         return sum(1 for task in self._tasks if not task.done)
+
+    def clear_completed(self):
+        self._tasks = [task for task in self._tasks if not task.done]

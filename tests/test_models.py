@@ -57,3 +57,12 @@ def test_active_count():
     manager.add_task("B")
     manager.complete_task(a.id)
     assert manager.active_count() == 1
+
+def test_clear_completed():
+    manager = TaskManager()
+    a = manager.add_task("A")
+    manager.add_task("B")
+    manager.complete_task(a.id)
+    manager.clear_completed()
+    assert len(manager) == 1
+    assert manager.active_count() == 1
