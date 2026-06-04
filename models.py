@@ -4,3 +4,6 @@ class TaskManager:
 
     def __len__(self):
         return len(self._tasks)
+
+    def add_task(self, title):
+        self._tasks.append(title)
